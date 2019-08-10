@@ -28,6 +28,6 @@ module.exports = async function (context, name) {
     const srcUri = blobService.getUrl('raw-markup', name),
         result = await copyBlob(srcUri, name);
 
-    context.log(result);
+    //context.log(result);
     return result;
 };

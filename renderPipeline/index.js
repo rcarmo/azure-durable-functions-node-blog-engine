@@ -28,7 +28,7 @@ module.exports = df.orchestrator(function* (context) {
     var pipeline = ["copyActivity"],
         currentItem = name;
 
-    context.log("pipeline:", pipeline, name, extension);
+    // context.log("pipeline:", pipeline, name, extension);
 
     Object.keys(activityMap).forEach(key => { 
         if(activityMap[key].extensions.includes(extension)) {
@@ -36,9 +36,9 @@ module.exports = df.orchestrator(function* (context) {
         }
     })
 
+    // all activities we build should return a JS object
     for(let activity of pipeline) {
-        // all activities we build should return a JS object
-        context.log("running:", activity);
+        // context.log("running:", activity);
         currentItem = yield context.df.callActivity(activity, currentItem);
         context.log(currentItem);
         if(currentItem == null) { // the activity has failed

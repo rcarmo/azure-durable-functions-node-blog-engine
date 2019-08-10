@@ -61,41 +61,37 @@ module.exports = async function (context, page) {
     ['head > link'].forEach(selector => {
         $(selector).each((i, elem) => {
             const href = $(elem).attr("href");
-            if(href && (href.startsWith("http") || (href[0] != '/'))) {
-                $(elem).attr("href", '/_assets/' + href);
+            if(href) {
+                if(!(href.startsWith("http") || (href[0] == '/'))) {
+                    $(elem).attr("href", '/_assets/' + href);
+                }
             }
-        })    
-    })
+        })
+    });
 
     // rewrite script SRC tags to have absolute URLs from site root
     ['script'].forEach(selector => {
         $(selector).each((i, elem) => {
             const src = $(elem).attr("src");
-            if(src && (src[0] != '/')) {
-                $(elem).attr("src", '/_assets/' + src);
+            if(src) {
+                if(!(src.startsWith("http") || (src[0] == '/'))) {
+                    $(elem).attr("src", '/_assets/' + src);
+                }
             }
         })
-    })
-
-    // rewrite links to have absolute URLs from site root
-    ['a'].forEach(selector => {
-        $(selector).each((i, elem) => {
-            const href = $(elem).attr("href");
-            if(href && (href.startsWith("http") || (href[0] != '/'))) {
-                $(elem).attr("href", '/' + path.dirname(page.name) + '/' + src);
-            }
-        })    
-    })
+    });
 
     // rewrite image tags to have absolute URLs from site root
     ['img'].forEach(selector => {
         $(selector).each((i, elem) => {
             const src = $(elem).attr("src");
-            if(src && (src[0] != '/')) {
-                $(elem).attr("src", '/' + path.dirname(page.name) + '/' + src);
+            if(src) {
+                if(!(src.startsWith("http") || (src[0] == '/'))) {
+                    $(elem).attr("src", '/' + path.dirname(page.name) + '/' + src);
+                }
             }
         })    
-    })
+    });
     html = $.html()
 
     const result = await uploadHTML(page.name.substr(0, page.name.lastIndexOf(".")) + ".html", html);

@@ -19,5 +19,8 @@ sync:
 	# Sync requires azcopy to be installed
 	az storage blob sync --source sampleContent --container raw-markup
 
+sync-all:
+	find sampleContent -print | xargs -J % touch %; make sync
+
 git-rewind-%:
 	git reset --soft HEAD~$* && git commit
