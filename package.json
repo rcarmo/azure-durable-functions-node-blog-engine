@@ -5,7 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "durable-functions": "^1.2.2",
+    "cheerio": "^1.0.0-rc.3",
+    "gray-matter": "^4.0.2",
     "marked": "^0.7.0",
+    "moment": "^2.24.0",
+    "mustache": "^3.0.1",
     "textile-js": "^2.0.4",
     "highlight.js": "^9.15.9",
     "dompurify": "^1.0.11",

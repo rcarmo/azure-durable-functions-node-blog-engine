@@ -3,11 +3,9 @@
  * triggered by an orchestrator function.
  */
 
-const fs = require("fs"),
-      path = require("path"),
-      storage = require("azure-storage"),
+const storage = require("azure-storage"),
+      matter = require("gray-matter"),
       marked = require('marked'),
-      mime = require('mime-types'),
       blobService = storage.createBlobService(process.env['AzureWebJobsStorage']);
 
 marked.setOptions({
@@ -26,22 +24,9 @@ const getMarkup = async (blobName) => {
     return new Promise((resolve, reject) => {
         blobService.getBlobToText("raw-markup", blobName, (err, data) => {
             if (err) {
-                reject(err);
+                reject(new Error(err)); // fail with runtime error and kill activity
             } else {
-                resolve({ message: `Downloaded "${data}"`, text: data });
-            }
-        });
-    });
-};
-
-const uploadHTML = async (pathname, text) => {
-    return new Promise((resolve, reject) => {
-        var options = {contentSettings:{contentType: mime.lookup(pathname), cacheControl: 'max-age: 38400'}};
-        blobService.createBlockBlobFromText("$web", pathname, text, options, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Text "${text}" is written to blob storage` });
+                resolve(data);
             }
         });
     });
@@ -49,11 +34,10 @@ const uploadHTML = async (pathname, text) => {
 
 module.exports = async function (context, name) {
     context.log(name);
-    
-    var response = await getMarkup(name),
-        html     = marked(response.text),
-        result   = await uploadHTML(name.substr(0, name.lastIndexOf(".")) + ".html", html);
-
-    context.log(html);
-    context.log(result);
+    const response = await getMarkup(name),
+            page = matter(response);
+    page.name = name;
+    // replace Markdown with rendered HTML
+    page.content = marked(page.content);
+    return page;
 };

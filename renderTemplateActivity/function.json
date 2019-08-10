@@ -1,0 +1,9 @@
+{
+  "bindings": [
+    {
+      "name": "page",
+      "type": "activityTrigger",
+      "direction": "in"
+    }
+  ]
+}

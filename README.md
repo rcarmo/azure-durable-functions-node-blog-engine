@@ -1,23 +1,24 @@
 # azure-durable-functions-node-blog-engine
 
-This is an [Azure Functions][azf] sample where I demonstrate how to build a blob storage processing pipeline with durable functions in [NodeJS][n]
+This is an [Azure Functions][azf] sample where I demonstrate how to build a blob storage processing pipeline with [durable functions][azdf] in [NodeJS][n].
 
 ## Why
 
-This was originally intended to demonstrate how to process thousands of XML/CSV files in a scalable way and insert them into a database as they were uploaded, but the general principle behind that kind of transformation pipeline is exactly the same as a static site generator, and handling text and image content also provides opportunity to incorporate Azure Cognitive Services.
+This was originally part of an "ETL" pipeline, and intended to demonstrate how to process thousands of XML/CSV files in a scalable way and insert them into a database as they were uploaded.
+
+But the general principle behind that kind of transformation pipeline is exactly the same as a static site generator, and handling text and image content also provides opportunity to incorporate Azure Cognitive Services and other fun things, so I turned the original pipeline into something of more general interest - i.e., a fully serverless static file generator.
+
+> Incidentally, you can run this completely inside the [Azure Free Tier][azfree]!
 
 The current demo site is [here](http://acmeblogenginebfa7.z6.web.core.windows.net) (may be temporarily broken as I build this out).
 
 ## Workflow
 
-This set of functions is a simple direct pipeline that converts raw markup from  decomposed into the following steps:
+This is designed as a multi-step pipeline that converts raw markup into HTML with the following steps:
 
-- A blob trigger is invoked whenever a new file is added to the `raw-markup` container, and goes through the following steps:
-  - Check the kind of file to handle
-    - If it's an image, then copy it across directly to the `$web` container
-    - If it's markup, then render it to HTML, apply a template, and place the results in the `$web` container
+![diagram](sampleContent/docs/internals/diagram.png)
 
-Right now rendering and saving to blob storage is a single step, but will be decomposed into more atomic, re-usable components as I flesh out the code.
+In short, markup is rendered into HTML and then re-rendered into a template, and everything else is just copied across into the `$web` container for an Azure Website.
 
 ## Setup
 
@@ -34,10 +35,16 @@ This sample currently assumes you've performed the following provisioning action
 
 - [ ] Azure Template
 - [ ] Integration with Cognitive Services
-- [ ] High-level integration with Application Insights
-- [ ] Split blob storage access from rendering (`writeActivity`)
-- [ ] Templating
-- [ ] Image processing
+- [ ] Higher-level integration with Application Insights
+- [ ] Update diagram
+- [ ] Add `renderPluginActivity` as an example extension
+- [ ] List of blog posts (ordered list of everything under `/blog`)
+- [ ] Add auxiliary storage table for metadata lookup
+- [ ] Flesh out example content and formatting tests
+- [x] Reformat asset links (images, stylesheets, etc.)
+- [x] Split blob storage access from rendering (`renderTemplateActivity`)
+- [x] Templating
+- [x] Image processing
 - [x] Simple rendering
 - [x] Sample content tree
 - [x] Basic engine
@@ -45,4 +52,6 @@ This sample currently assumes you've performed the following provisioning action
 
 [n]: http://nodejs.org
 [azf]: https://docs.microsoft.com/en-us/azure/azure-functions/
+[azdf]: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview
+[azfree]: https://azure.microsoft.com/free/
 

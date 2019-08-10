@@ -17,4 +17,7 @@ sync:
 													--resource-group $(RESOURCE_GROUP) \
 											  		| jq -r '.[] | select (.name == "AzureWebJobsStorage").value'))
 	# Sync requires azcopy to be installed
-	az storage blob sync --source raw-markup --container raw-markup
+	az storage blob sync --source sampleContent --container raw-markup
+
+git-rewind-%:
+	git reset --soft HEAD~$* && git commit

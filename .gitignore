@@ -244,4 +244,5 @@ ModelManifest.xml
 .DS_Store
 
 # Avoid bundling this
-raw-markup
+.python-version
+.vscode
