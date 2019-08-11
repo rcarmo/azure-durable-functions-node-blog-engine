@@ -24,3 +24,5 @@ def render_feed()
     else:
         return {"items": items}
 ```
+
+This should be a plain text line.

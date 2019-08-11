@@ -23,17 +23,20 @@ This sample currently assumes you've performed the following provisioning action
 - Enabled the `Static website` feature and made sure the `$web` container has public access enabled
 - Gone into Function App `Configuration` -> `All Settings` -> `Deployment Center` and activated `Local Git` deployment via Kudu (re-visit that pane after configuration to get the Git URL and credentials)
 
-## To Do
+## Contributing/Roadmap/To Do
+
+If you feel like contributing, this is a rough roadmap/To Do list that matches what I usually need from a static file generator and some Azure-specific features that I intend to implement given time:
 
 - [ ] Integration with Cognitive Services
 - [ ] Higher-level integration with Application Insights
 - [ ] Update diagram
-- [ ] Add `renderPluginActivity` as an example extension
+- [ ] Add `renderTableActivity` to render YAML data into nice tables
 - [ ] Azure Template for automated deployment
 - [ ] List of blog posts (ordered list of everything under `/blog`)
-- [ ] Add auxiliary storage table for metadata lookup
-- [ ] Set blob metadata from page frontmatter
-- [ ] Flesh out example content and formatting tests
+- [ ] Add auxiliary Azure storage table for metadata lookup and building page listings using page front matter
+- [ ] Handle blob deletion [using EventGrid](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-event-quickstart) - **Good first issue!**
+- [ ] Set generated blob metadata (modification time, caching, etc.) from page front matter
+- [x] Flesh out example content/documentation and formatting tests
 - [x] Reformat asset links (images, stylesheets, etc.)
 - [x] Split blob storage access from rendering (`renderTemplateActivity`)
 - [x] Templating

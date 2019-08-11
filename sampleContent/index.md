@@ -6,7 +6,7 @@ Date: 2019-08-10 13:05:00
 
 ## What this is about
 
-This is a serverless static site generator that takes Markdown files as input and generates an Azure Website.
+This is a serverless static site generator that takes Textile and Markdown files as input and generates a [static Azure Website](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website).
 
 ## [Documentation](docs)
 

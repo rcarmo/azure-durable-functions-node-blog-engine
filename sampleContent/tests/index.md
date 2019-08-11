@@ -5,7 +5,7 @@ Title: Tests
 
 ## To Do:
 
-* [Footnotes](tests/footnotes) (Markdown-only test)
+* [Textile Markup](tests/markup)
 
 ## Ongoing:
 
@@ -13,4 +13,5 @@ Title: Tests
 
 ## Passed:
 
+* [Footnotes](tests/footnotes) (Markdown-only test)
 * [Inline Images](tests/img)

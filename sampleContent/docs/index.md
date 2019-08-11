@@ -5,5 +5,5 @@ Title: Engine Documentation
 ---
 
 * [Basics](docs/basics)
-* [Content Formatting](docs/content)
+* [Templating](docs/templating)
 * [Internals](docs/internals)
