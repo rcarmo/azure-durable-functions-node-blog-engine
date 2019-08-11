@@ -1,7 +1,7 @@
 {
   "name": "azure-durable-functions-node-blog-engine",
   "version": "1.0.0",
-  "description": "This is a sample to demonstrate how to build a blob storage processing pipeline with durable functions",
+  "description": "This is a static file generator that demonstrates how to build a blob storage processing pipeline with durable functions",
   "main": "index.js",
   "dependencies": {
     "durable-functions": "^1.2.2",
@@ -24,8 +24,8 @@
     "type": "git",
     "url": "git+https://github.com/rcarmo/azure-durable-functions-node-blog-engine.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Rui Carmo",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rcarmo/azure-durable-functions-node-blog-engine/issues"
   },
