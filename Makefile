@@ -16,6 +16,8 @@ sync:
 													--name $(FUNCTION_APP_NAME) \
 													--resource-group $(RESOURCE_GROUP) \
 											  		| jq -r '.[] | select (.name == "AzureWebJobsStorage").value'))
+	# Cleanup Mac filesystem metadata
+	@find . -print | grep .DS_Store | xargs rm
 	# Sync requires azcopy to be installed
 	az storage blob sync --source sampleContent --container raw-markup
 
