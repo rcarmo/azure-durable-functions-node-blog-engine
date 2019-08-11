@@ -36,3 +36,9 @@ This is the template formatter, which takes the HTML, rewrites relative URLs, an
 ### `copyActivity`
 
 This is a straightforward blob-to-blob copy activity for non-markup files (images, etc.). No transformations are currently performed.
+
+## Monitoring
+
+Since Azure Functions is usually deployed with Application Insights enabled, you have real-time monitoring and tracing, as well as per-activity metrics:
+
+![Portal](appinsights.png)

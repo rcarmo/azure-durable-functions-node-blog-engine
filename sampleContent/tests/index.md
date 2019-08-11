@@ -3,15 +3,15 @@ From: Rui Carmo
 Title: Tests
 ---
 
-## To Do:
+## To Do
 
 * [Textile Markup](tests/markup)
 
-## Ongoing:
+## Ongoing
 
 * [Syntax Highlighting](tests/highlight)
 
-## Passed:
+## Passed
 
 * [Footnotes](tests/footnotes) (Markdown-only test)
 * [Inline Images](tests/img)

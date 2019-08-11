@@ -45,6 +45,13 @@ If you feel like contributing, this is a rough roadmap/To Do list that matches w
 - [x] Sample content tree
 - [x] Basic engine
 
+## Monitoring
+
+Since Azure Functions is usually deployed with Application Insights enabled, you can do real-time monitoring and tracing, as well as per-activity metrics:
+
+![appinsights](sampleContent/docs/internals/appinsights.png)
+
+
 [n]: http://nodejs.org
 [azf]: https://docs.microsoft.com/en-us/azure/azure-functions/
 [azdf]: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview
