@@ -4,7 +4,7 @@ This is an [Azure Functions][azf] sample that demonstrates how to build a static
 
 ![diagram](sampleContent/docs/internals/diagram.png)
 
-All you need to do is upload your Markdown/Textile files to Azure storage, and they'll get automatically rendered to a nicely formatted web site. You can even [use OneDrive to do that automatically for you][flow].
+All you need to do is upload your Markdown/Textile files to Azure storage, and they'll be rendered into a nicely formatted web site. You can even [use OneDrive to do that automatically for you][flow].
 
 The current demo site is [here](http://acmeblogenginebfa7.z6.web.core.windows.net) (may be temporarily broken as I build this out).
 
