@@ -14,10 +14,12 @@ const df = require('durable-functions'),
                 extensions: ['.text', '.textile'],
                 pipeline: ['renderTextileActivity', 'renderTemplateActivity']
             },
+           /* Render HTML snippets directly (disabled to allow custom content pass-through)
             renderTemplateActivity: {
                 extensions: ['.htm', '.html'],
                 pipeline: ['renderTemplateActivity']
             }
+            */
         };
 
 module.exports = df.orchestrator(function* (context) {
@@ -40,7 +42,7 @@ module.exports = df.orchestrator(function* (context) {
     for(let activity of pipeline) {
         // context.log("running:", activity);
         currentItem = yield context.df.callActivity(activity, currentItem);
-        context.log(currentItem);
+        //context.log(currentItem);
         if(currentItem == null) { // the activity has failed
             context.log("error:", activity)
             yield cancel(activity)

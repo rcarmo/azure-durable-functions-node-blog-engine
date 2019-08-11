@@ -5,19 +5,26 @@
 
 const storage = require("azure-storage"),
       matter = require("gray-matter"),
-      marked = require('marked'),
+      remarkable = require('remarkable'),
+      hljs = require('highlight.js'),
       blobService = storage.createBlobService(process.env['AzureWebJobsStorage']);
 
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  highlight: function(code) {
-    return require('highlight.js').highlightAuto(code).value;
-  },
-  gfm: true,
-  breaks: false,
-  smartLists: true,
-  smartypants: true,
-  xhtml: false
+var md = new remarkable.Remarkable({
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(lang, str).value;
+        } catch (err) {}
+      }
+  
+      try {
+        return hljs.highlightAuto(str).value;
+      } catch (err) {}
+  
+      return ''; // use external default escaping
+    },
+    typographer: true,
+    html: true
 });
 
 const getMarkup = async (blobName) => {
@@ -33,11 +40,11 @@ const getMarkup = async (blobName) => {
 };
 
 module.exports = async function (context, name) {
-    context.log(name);
+    //context.log(name);
     const response = await getMarkup(name),
             page = matter(response);
     page.name = name;
     // replace Markdown with rendered HTML
-    page.content = marked(page.content);
+    page.content = md.render(page.content);
     return page;
 };

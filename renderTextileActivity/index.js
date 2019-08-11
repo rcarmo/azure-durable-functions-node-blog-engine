@@ -21,11 +21,13 @@ const getMarkup = async (blobName) => {
 };
 
 module.exports = async function (context, name) {
-    context.log(name);
+    // context.log(name);
+
     const response = await getMarkup(name),
             page = matter(response);
     page.name = name;
-    // replace Markdown with rendered HTML
+
+    // replace Textile with rendered HTML
     page.content = textile(page.content);
     return page;
 };

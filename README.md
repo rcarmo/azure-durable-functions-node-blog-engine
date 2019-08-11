@@ -32,6 +32,7 @@ This sample currently assumes you've performed the following provisioning action
 - [ ] Azure Template for automated deployment
 - [ ] List of blog posts (ordered list of everything under `/blog`)
 - [ ] Add auxiliary storage table for metadata lookup
+- [ ] Set blob metadata from page frontmatter
 - [ ] Flesh out example content and formatting tests
 - [x] Reformat asset links (images, stylesheets, etc.)
 - [x] Split blob storage access from rendering (`renderTemplateActivity`)

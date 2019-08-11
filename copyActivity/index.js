@@ -3,11 +3,7 @@
  * triggered by an orchestrator function.
  */
 
-const fs = require("fs"),
-      path = require("path"),
-      storage = require("azure-storage"),
-      marked = require('marked'),
-      mime = require('mime-types'),
+const storage = require("azure-storage"),
       blobService = storage.createBlobService(process.env['AzureWebJobsStorage']);
 
 
@@ -24,7 +20,7 @@ const copyBlob = async (srcUri, pathname) => {
 }
 
 module.exports = async function (context, name) {
-    context.log("copy:", name);
+    //context.log("copy:", name);
     const srcUri = blobService.getUrl('raw-markup', name),
         result = await copyBlob(srcUri, name);
 

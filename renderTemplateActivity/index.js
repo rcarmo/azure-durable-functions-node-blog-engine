@@ -45,7 +45,7 @@ Object.fromEntries = arr => Object.assign({}, ...Array.from(arr, ([k, v]) => ({[
 
 
 module.exports = async function (context, page) {
-    context.log(page.name);
+    // context.log(page.name);
 
     const template = await getTemplate('_assets/page_template.html');
 
@@ -96,7 +96,7 @@ module.exports = async function (context, page) {
 
     const result = await uploadHTML(page.name.substr(0, page.name.lastIndexOf(".")) + ".html", html);
 
-    context.log(html);
-    context.log(result);
+    // context.log(html);
+    // context.log(result);
     return result;
 };
