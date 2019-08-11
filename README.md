@@ -4,6 +4,8 @@ This is an [Azure Functions][azf] sample that demonstrates how to build a static
 
 ![diagram](sampleContent/docs/internals/diagram.png)
 
+All you need to do is upload your Markdown/Textile files to Azure storage, and they'll get automatically rendered to a nicely formatted web site. You can even [use OneDrive to do that automatically for you][flow].
+
 The current demo site is [here](http://acmeblogenginebfa7.z6.web.core.windows.net) (may be temporarily broken as I build this out).
 
 ## Why
@@ -34,8 +36,9 @@ If you feel like contributing, this is a rough roadmap/To Do list that matches w
 - [ ] Azure Template for automated deployment
 - [ ] List of blog posts (ordered list of everything under `/blog`)
 - [ ] Add auxiliary Azure storage table for metadata lookup and building page listings using page front matter
-- [ ] Handle blob deletion [using EventGrid](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-event-quickstart) - **Good first issue!**
+- [ ] Handle blob deletion [using EventGrid](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-event-quickstart) - **Good first contribution!**
 - [ ] Set generated blob metadata (modification time, caching, etc.) from page front matter
+- [ ] Add screenshots on how to [integrate with OneDrive using Flow/Logic Apps][flow] - **Good first contribution!**
 - [x] Flesh out example content/documentation and formatting tests
 - [x] Reformat asset links (images, stylesheets, etc.)
 - [x] Split blob storage access from rendering (`renderTemplateActivity`)
@@ -57,4 +60,5 @@ Since Azure Functions is usually deployed with Application Insights enabled, you
 [azdf]: https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview
 [azfree]: https://azure.microsoft.com/free/
 [saw]: https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website
+[flow]: https://flow.microsoft.com/en-us/galleries/public/templates/2f90b5d3-029b-4e2e-ad37-1c0fe6d187fe/when-a-file-is-uploaded-to-onedrive-copy-it-to-azure-storage-container/
 
