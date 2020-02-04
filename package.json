@@ -9,7 +9,7 @@
     "gray-matter": "^4.0.2",
     "remarkable": "^2.0.0",
     "moment": "^2.24.0",
-    "mustache": "^3.0.1",
+    "mustache": "^4.0.0",
     "textile-js": "^2.0.4",
     "highlight.js": "^9.15.9",
     "dompurify": "^1.0.11",
