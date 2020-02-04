@@ -53,9 +53,8 @@ module.exports = async function (context, page) {
     page.data = Object.fromEntries(Object.entries(page.data).map(([k, v]) => [k.toLowerCase(), v]));
     page.data.content = page.content;
 
-    var html = mustache.render(template, page.data);
-
-    $ = cheerio.load(html);
+    var html = mustache.render(template, page.data),
+        $ = cheerio.load(html);
 
     // rewrite template head links (CSS, etc.)
     ['head > link'].forEach(selector => {
@@ -92,7 +91,7 @@ module.exports = async function (context, page) {
             }
         })    
     });
-    html = $.html()
+    html = $.html();
 
     const result = await uploadHTML(page.name.substr(0, page.name.lastIndexOf(".")) + ".html", html);
 
