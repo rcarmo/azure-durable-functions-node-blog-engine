@@ -12,7 +12,7 @@
     "mustache": "^4.0.0",
     "textile-js": "^2.0.4",
     "highlight.js": "^11.0.1",
-    "dompurify": "^2.0.8",
+    "dompurify": "^3.0.1",
     "azure-storage": "^2.10.3",
     "mime-types": "^2.1.24"
   },
