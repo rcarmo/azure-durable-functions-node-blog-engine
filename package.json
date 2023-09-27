@@ -4,7 +4,7 @@
   "description": "This is a static file generator that demonstrates how to build a blob storage processing pipeline with durable functions",
   "main": "index.js",
   "dependencies": {
-    "durable-functions": "^2.1.1",
+    "durable-functions": "^3.0.0",
     "cheerio": "^1.0.0-rc.3",
     "gray-matter": "^4.0.2",
     "remarkable": "^2.0.0",
