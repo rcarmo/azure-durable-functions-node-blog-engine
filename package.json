@@ -14,7 +14,7 @@
     "highlight.js": "^11.0.1",
     "dompurify": "^3.0.1",
     "azure-storage": "^2.10.3",
-    "mime-types": "^2.1.24"
+    "mime-types": "^3.0.1"
   },
   "devDependencies": {},
   "scripts": {
